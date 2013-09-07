@@ -23,7 +23,7 @@
   // When the user presses enter on the message input, write the message to firebase.
 	$('#submit').click(function (e) {	
 
-	var nameIn = $('#nameInput').val();
+	var nameIn = $('#nameInput').val().toLowerCase();
 	var established  = $('#established').val();
   	var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
 	var GPS = $('#GPSLoc').val();
