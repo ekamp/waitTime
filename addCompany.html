@@ -62,24 +62,13 @@ var finalToken = data.access_token;
 console.log(finalToken);
 
     $.ajax({
-    url: "https://api.foursquare.com/v2/users/self?oauth_token="+finalToken,
+    url: "https://api.foursquare.com/v2/users/self?oauth_token="+finalToken+"&callback=?",
     success : function(data) {
     var returnedData = data.response.user.photo;
     console.log(returnedData);
 }
     });
 
-}
-    });
-
-
-
-
-$.ajax({
-url: "https://api.foursquare.com/v2/users/self?oauth_token="+finalToken,
-success : function(data) {
-var returnedData = data.response.user.photo;
-console.log(returnedData);
 }
     });
 
