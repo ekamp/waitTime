@@ -31,6 +31,11 @@
 			  } 
 			  else 
 			  {
+                  for (var key in db) {
+                        if (db.hasOwnProperty(key)) {
+                                alert(key + " -> " + p[key]);
+                                  }
+                  }
   				$('<div/>').text(db.name).prepend($('<em/>')
       				.text(db.est+': ')).appendTo($('#companyInformation'));
 			  }
