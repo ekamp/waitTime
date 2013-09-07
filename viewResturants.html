@@ -32,13 +32,11 @@
 			  else 
 			  {
                   for (var key in db) {
-                      console.log("asdf");
                         if (db.hasOwnProperty(key)) {
-                                alert(key + " -> " + db[key]);
+                                $('<div/>').text(db[key]).prepend($('<em/>')
+      				            .text(db[key]+': ')).appendTo($('#companyInformation'));
                                   }
                   }
-  				$('<div/>').text(db.name).prepend($('<em/>')
-      				.text(db.est+': ')).appendTo($('#companyInformation'));
 			  }
 			 });
 	});
