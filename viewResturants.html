@@ -32,8 +32,9 @@
 			  else 
 			  {
                   for (var key in db) {
+                      console.log("asdf");
                         if (db.hasOwnProperty(key)) {
-                                alert(key + " -> " + p[key]);
+                                alert(key + " -> " + db[key]);
                                   }
                   }
   				$('<div/>').text(db.name).prepend($('<em/>')
