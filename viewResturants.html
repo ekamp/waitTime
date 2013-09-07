@@ -17,11 +17,10 @@
 <script>
   var search = $('#search').val();
   var companyInfo = new Firebase('https://waitTime.firebaseio.com/companylist/'+search+'/');
-
-console.log("debug");
+	
+console.log(companyInfo);
 
 	$('#submit').click(function (e) {
-		console.log("ok");
 		companyInfo.on('value', function (snapshot) {
 			db = snapshot.val();
 			console.log(db);	
