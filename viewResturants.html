@@ -16,14 +16,11 @@
 <div id="companyInformation"></div>
 <script>
 //change the search option to use real time search / angular
-  // Get a reference to the root of the chat data.
 
   var search = $('#search').val();
-  var companyInfo = new Firebase('https://waitTime.firebaseio.com/name/'+search);
+  var companyInfo = new Firebase('https://waitTime.firebaseio.com/name/'+search+'/');
 
 console.log("debug");
-  // When the user presses enter on the message input, write the message to firebase.
-
 
 	$('#submit').click(function (e) {
 		console.log("ok");
