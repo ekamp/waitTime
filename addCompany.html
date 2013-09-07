@@ -1,5 +1,67 @@
 <!doctype html>
 <html>
+<<<<<<< HEAD
+    <head>
+        <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/addCompany.css">
+        <link rel="stylesheet" href="lib/Buttons/css/font-awesome.min.css">
+        <link rel="stylesheet" href="lib/Buttons/css/buttons.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/Buttons/js/buttons.js"></script>
+        <script src="js/waitTime.js"></script>
+    </head>
+    <body>
+        <center>
+            <div id="container">
+                <div id="title">Add your company below</div>
+                <div id="title">Add Company</div>
+                <div id='companyInfo'></div>
+                <input type='text' id='nameInput' placeholder='Company Name'>
+                <!--<input type='text' id='GPSLoc' placeholder='GPS Corr'>-->
+                <input type='text' id='URL' placeholder='URL'>
+                <a href="submit" class="button button-flat-primary">Add</a>
+                <!--<button type="button" id="submit">Add</button>
+                <button type="button" id="submit">Clear</button>-->
+            </div>
+        </center>
+        <script>
+
+            function queryObj() {
+                var result = {}, queryString = location.search.slice(1),
+                    re = /([^&=]+)=([^&]*)/g, m;
+
+                while (m = re.exec(queryString)) {
+                    result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+                }
+
+                return result;
+            }
+
+            // Usage:
+            var oauth = queryObj()["code"];
+
+            $.ajax({
+            url: "https://api.foursquare.com/v2/users/self?oauth_token="+oauth,
+            success : function(data) {
+                var returnedData = data.response.user.photo;
+                console.log(returnedData);
+            }
+            });
+
+            // Get a reference to the root of the chat data.
+            // When the user presses enter on the message input, write the message to firebase.
+            function submit(){
+                var nameIn = $('#nameInput').val();
+                var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
+                //var GPS = $('#GPSLoc').val();
+                var URL = $('#URL').val();
+                database.set({name:nameIn, est:established, GPSLoc:GPS, site:URL});
+                alert("successfully added "+nameIn);
+            }
+        </script>       
+    </body>
+</html>
+=======
 <head>
 <script src="https://cdn.firebase.com/v0/firebase.js"></script>
 <link rel="stylesheet" type="text/css" href="css/addCompany.css">
@@ -99,3 +161,4 @@ function submit(){
     </script>       
         </body>
         </html>
+>>>>>>> 7edebf745e58fcbc78e36ea123e30bb93e65108c
