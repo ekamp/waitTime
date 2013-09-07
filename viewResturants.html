@@ -17,9 +17,10 @@
 <script>
 
 	$('#submit').click(function (e) {
-		  var search = $('#search').val().toLowerCase();
-		  var companyInfo = new Firebase('https://waitTime.firebaseio.com/companylist/'+search+'/');
+		var search = $('#search').val().toLowerCase();
+		var companyInfo = new Firebase('https://waitTime.firebaseio.com/companylist/');
 	
+		//var companyInfo = new Firebase('https://waitTime.firebaseio.com/companylist/'+search+'/');
 		console.log(companyInfo);
 		
 		companyInfo.on('value', function (snapshot) {
