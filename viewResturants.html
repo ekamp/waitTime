@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+     <link rel="stylesheet" type="text/css" href="css/waitTime.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/waitTime.js"></script>
+    </head>
+    <body>
+        <div id="title">Search or select a company from below</div>
+        <div>
+	<div id='companyInfo'></div>
+<input type='text' id='search' placeholder='Search Company Name'>
+
+<button  type="button" id="submit">Search company</button>
+<div id="companyInformation"></div>
+<script>
+//change the search option to use real time search / angular
+  // Get a reference to the root of the chat data.
+
+  var search = $('#search').val();
+  var companyInfo = new Firebase('https://waitTime.firebaseio.com/name/'+search);
+
+  // When the user presses enter on the message input, write the message to firebase.
+
+
+	$('#submit').click(function (e) {
+		database.on('value', function (snapshot) {
+			db = snapshot.val();	
+			if(db === null) {
+			    alert('Company does not exist.');
+			  } 
+			  else 
+			  {
+  				$('<div/>').text(db.name).prepend($('<em/>')
+      				.text(db.est+': ')).appendTo($('#companyInformation'));
+			  }
+			 });
+
+	}
+</script>       
+
+
+    </body>
+</html>
