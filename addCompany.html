@@ -10,7 +10,6 @@
         <div id="title">Add Company</div>
 	    <div id='companyInfo'></div>
         <input type='text' id='nameInput' placeholder='Company Name'>
-        <input type='text' id='established' placeholder='Established Year'>
         <input type='text' id='GPSLoc' placeholder='GPS Corr'>
         <input type='text' id='URL' placeholder='URL'>
         <button type="button" id="submit">Add your company</button>
@@ -19,7 +18,6 @@
           // When the user presses enter on the message input, write the message to firebase.
             $('#submit').click(function (e) {	
                 var nameIn = $('#nameInput').val();
-                var established  = $('#established').val();
                 var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
                 var GPS = $('#GPSLoc').val();
                 var URL = $('#URL').val();
