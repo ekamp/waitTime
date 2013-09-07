@@ -24,6 +24,14 @@
 	database.push({name:nameIn, age:ageIn});
 });
 
+
+messagesRef.limit(10).on('child_added', function (snapshot) {
+    var message = snapshot.val();
+    $('<div/>').text(message.text).prepend($('<em/>')
+      .text(message.name+': ')).appendTo($('#messagesDiv'));
+    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+  });
+
 </script>
 </body>
 </html>
