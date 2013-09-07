@@ -8,6 +8,7 @@
     </head>
     <body>
         <div id="title">Add your company below</div>
+<<<<<<< HEAD
 	    <div id='companyInfo'></div>
         <input type='text' id='nameInput' placeholder='Company Name'>
         <input type='text' id='established' placeholder='Established Year'>
@@ -15,6 +16,33 @@
         <input type='text' id='URL' placeholder='URL'>
         <button type="button" id="submit">Add your company</button>
         <script>
+=======
+        <div>
+	<div id='companyInfo'></div>
+<input type='text' id='nameInput' placeholder='Company Name'>
+<input type='text' id='established' placeholder='Established Year'>
+<input type='text' id='GPSLoc' placeholder='GPS Corr'>
+<input type='text' id='URL' placeholder='URL'>
+
+<button  type="button" id="submit">Add your company</button>
+<script>
+
+  // Get a reference to the root of the chat data.
+
+  // When the user presses enter on the message input, write the message to firebase.
+	$('#submit').click(function (e) {	
+
+	var nameIn = $('#nameInput').val().toLowerCase();
+	var established  = $('#established').val();
+  	var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
+	var GPS = $('#GPSLoc').val();
+	var URL = $('#URL').val();
+	database.set({name:nameIn, est:established, GPSLoc:GPS, site:URL});
+	alert("successfully added "+nameIn);
+});
+
+</script>       
+>>>>>>> 06c3528d4c9ac24effd6f71e8f354bc764a4c54c
 
           // Get a reference to the root of the chat data.
           // When the user presses enter on the message input, write the message to firebase.
