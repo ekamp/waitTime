@@ -26,9 +26,9 @@
 
 
 messagesRef.limit(10).on('child_added', function (snapshot) {
-    var message = snapshot.val();
-    $('<div/>').text(ageIn.text).prepend($('<em/>')
-      .text(message.nameIn+': ')).appendTo($('#messagesDiv'));
+    var db = snapshot.val();
+    $('<div/>').text(db.age).prepend($('<em/>')
+      .text(db.name+': ')).appendTo($('#messagesDiv'));
     $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
   });
 
