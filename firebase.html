@@ -8,15 +8,21 @@
 <div id='messagesDiv'></div>
 <input type='text' id='nameInput' placeholder='Name'>
 <input type='text' id='ageInput' placeholder='Age'>
+<button id= "submit">sometext</button>
+
+
 <script>
 
   // Get a reference to the root of the chat data.
   var database = new Firebase('https://waitTime.firebaseio.com/');
 
   // When the user presses enter on the message input, write the message to firebase.
+	$('#submit').click(function (e) {	
+
 	var nameIn = $('#nameInput').val();
 	var ageIn = $('#ageInput').val();
 	database.push({name:nameIn, age:ageIn});
+});
 
 </script>
 </body>
