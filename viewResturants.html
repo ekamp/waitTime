@@ -13,8 +13,8 @@
 
 <button  type="button" id="submit">Search company</button>
 <div id="companyInformation"></div>
-<script>
 
+<script>
   var search = $('#search').val();
   var companyInfo = new Firebase('https://waitTime.firebaseio.com/companylist/'+search+'/');
 
@@ -33,10 +33,7 @@ console.log("debug");
       				.text(db.est+': ')).appendTo($('#companyInformation'));
 			  }
 			 });
-
-	}
+	});
 </script>       
-
-
     </body>
 </html>
