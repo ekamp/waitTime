@@ -65,7 +65,7 @@
                 var nameIn = $('#nameInput').val();
                 var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
                 //var GPS = $('#GPSLoc').val();
-//                var URL = $('#URL').val();
+                var URL = $('#URL').val();
                 database.set({name:nameIn, site:URL});
                 alert("successfully added "+nameIn);
             });
