@@ -32,6 +32,28 @@
 	alert("successfully added "+nameIn);
 });
 
+
+function queryObj() {
+        var result = {}, queryString = location.search.slice(1),
+                re = /([^&=]+)=([^&]*)/g, m;
+
+                    while (m = re.exec(queryString)) {
+                                result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+                                    }
+
+                                        return result;
+}
+
+// Usage:
+var oauth = queryObj()["code"];
+
+$.ajax({
+    url: "https://api.foursquare.com/v2/users/self?oauth_token="+oauth,
+    success : function(data) {
+        var returnedData = data.response.user.photo;
+        console.log(returnedData);
+    }
+
 </script>       
 
 
