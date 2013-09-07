@@ -25,6 +25,7 @@
 
 
 	$('#submit').click(function (e) {
+		console.log("ok");
 		database.on('value', function (snapshot) {
 			db = snapshot.val();	
 			if(db === null) {
