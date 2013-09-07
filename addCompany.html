@@ -18,14 +18,14 @@
 <button  type="button" id="submit">Add your company</button>
 <script>
 
-var nameIn = $('#nameInput').val();
   // Get a reference to the root of the chat data.
-  var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
 
   // When the user presses enter on the message input, write the message to firebase.
 	$('#submit').click(function (e) {	
 
+	var nameIn = $('#nameInput').val();
 	var established  = $('#established').val();
+  	var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
 	var GPS = $('#GPSLoc').val();
 	var URL = $('#URL').val();
 	database.set({name:nameIn, est:established, GPSLoc:GPS, site:URL});
