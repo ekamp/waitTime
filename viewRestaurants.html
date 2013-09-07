@@ -33,8 +33,8 @@
 			  {
                   for (var key in db) {
                         if (db.hasOwnProperty(key)) {
-                                $('<div/>').text(db[key]).prepend($('<em/>')
-      				            .text(db[key]+': ')).appendTo($('#companyInformation'));
+                                $('<div/>').text(db[key].name).prepend($('<em/>')
+      				            .text(db[key].site+': ')).appendTo($('#companyInformation'));
                                   }
                   }
 			  }
