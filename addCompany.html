@@ -1,39 +1,33 @@
 <!doctype html>
 <html>
     <head>
-    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
-     <link rel="stylesheet" type="text/css" href="css/waitTime.css">
+        <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/addCompany.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="js/waitTime.js"></script>
     </head>
     <body>
         <div id="title">Add your company below</div>
-        <div>
-	<div id='companyInfo'></div>
-<input type='text' id='nameInput' placeholder='Company Name'>
-<input type='text' id='established' placeholder='Established Year'>
-<input type='text' id='GPSLoc' placeholder='GPS Corr'>
-<input type='text' id='URL' placeholder='URL'>
+	    <div id='companyInfo'></div>
+        <input type='text' id='nameInput' placeholder='Company Name'>
+        <input type='text' id='established' placeholder='Established Year'>
+        <input type='text' id='GPSLoc' placeholder='GPS Corr'>
+        <input type='text' id='URL' placeholder='URL'>
+        <button type="button" id="submit">Add your company</button>
+        <script>
 
-<button  type="button" id="submit">Add your company</button>
-<script>
+          // Get a reference to the root of the chat data.
+          // When the user presses enter on the message input, write the message to firebase.
+            $('#submit').click(function (e) {	
+                var nameIn = $('#nameInput').val();
+                var established  = $('#established').val();
+                var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
+                var GPS = $('#GPSLoc').val();
+                var URL = $('#URL').val();
+                database.set({name:nameIn, est:established, GPSLoc:GPS, site:URL});
+                alert("successfully added "+nameIn);
+            });
 
-  // Get a reference to the root of the chat data.
-
-  // When the user presses enter on the message input, write the message to firebase.
-	$('#submit').click(function (e) {	
-
-	var nameIn = $('#nameInput').val();
-	var established  = $('#established').val();
-  	var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
-	var GPS = $('#GPSLoc').val();
-	var URL = $('#URL').val();
-	database.set({name:nameIn, est:established, GPSLoc:GPS, site:URL});
-	alert("successfully added "+nameIn);
-});
-
-</script>       
-
-
+        </script>       
     </body>
 </html>
