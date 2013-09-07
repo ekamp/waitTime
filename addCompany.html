@@ -8,12 +8,14 @@
     </head>
     <body>
         <center>
-            <div id="title">Add Company</div>
-            <div id='companyInfo'></div>
-            <input type='text' id='nameInput' placeholder='Company Name'>
-            <input type='text' id='GPSLoc' placeholder='GPS Corr'>
-            <input type='text' id='URL' placeholder='URL'>
-            <button type="button" id="submit">Add your company</button>
+            <div id="container">
+                <div id="title">Add Company</div>
+                <div id='companyInfo'></div>
+                <input type='text' id='nameInput' placeholder='Company Name'>
+                <!--<input type='text' id='GPSLoc' placeholder='GPS Corr'>-->
+                <input type='text' id='URL' placeholder='URL'>
+                <button type="button" id="submit">Add your company</button>
+            </div>
         </center>
      <script>
           // Get a reference to the root of the chat data.
@@ -21,7 +23,7 @@
             $('#submit').click(function (e) {	
                 var nameIn = $('#nameInput').val();
                 var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
-                var GPS = $('#GPSLoc').val();
+                //var GPS = $('#GPSLoc').val();
                 var URL = $('#URL').val();
                 database.set({name:nameIn, est:established, GPSLoc:GPS, site:URL});
                 alert("successfully added "+nameIn);
