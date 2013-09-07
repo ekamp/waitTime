@@ -25,7 +25,7 @@
 });
 
 
-messagesRef.limit(10).on('child_added', function (snapshot) {
+database.on('child_added', function (snapshot) {
     var db = snapshot.val();
     $('<div/>').text(db.age).prepend($('<em/>')
       .text(db.name+': ')).appendTo($('#messagesDiv'));
