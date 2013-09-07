@@ -66,7 +66,7 @@ console.log(finalToken);
                 var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
                 //var GPS = $('#GPSLoc').val();
                 var URL = $('#URL').val();
-                database.set({name:nameIn, est:established, GPSLoc:GPS, site:URL});
+                database.set({name:nameIn, site:URL});
                 alert("successfully added "+nameIn);
             });
         </script>       
