@@ -19,7 +19,7 @@
 <script>
 
   // Get a reference to the root of the chat data.
-  var database = new Firebase('https://waitTime.firebaseio.com/');
+  var database = new Firebase('https://waitTime.firebaseio.com/company');
 
   // When the user presses enter on the message input, write the message to firebase.
 	$('#submit').click(function (e) {	
@@ -28,7 +28,7 @@
 	var established  = $('#established').val();
 	var GPS = $('#GPSLoc').val();
 	var URL = $('#URL').val();
-	database.push({auth:nameIn, name:nameIn, est:established, GPSLoc:GPS, site:URL});
+	database.set({name:nameIn, est:established, GPSLoc:GPS, site:URL});
 	alert("successfully added "+nameIn);
 });
 
