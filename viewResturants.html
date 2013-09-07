@@ -23,7 +23,8 @@ console.log("debug");
 	$('#submit').click(function (e) {
 		console.log("ok");
 		companyInfo.on('value', function (snapshot) {
-			db = snapshot.val();	
+			db = snapshot.val();
+			console.log(db);	
 			if(db === null) {
 			    alert('Company does not exist.');
 			  } 
