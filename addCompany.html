@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+<<<<<<< HEAD
     <head>
         <script src="https://cdn.firebase.com/v0/firebase.js"></script>
         <link rel="stylesheet" type="text/css" href="css/addCompany.css">
@@ -60,3 +61,103 @@
         </script>       
     </body>
 </html>
+=======
+<head>
+<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+<link rel="stylesheet" type="text/css" href="css/addCompany.css">
+<link rel="stylesheet" href="lib/Buttons/css/font-awesome.min.css">
+<link rel="stylesheet" href="lib/Buttons/css/buttons.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="lib/Buttons/js/buttons.js"></script>
+<script src="js/waitTime.js"></script>
+</head>
+<body>
+<div id="title">Add your company below</div>
+<div>
+<div id='companyInfo'></div>
+<input type='text' id='nameInput' placeholder='Company Name'>
+<input type='text' id='established' placeholder='Established Year'>
+<input type='text' id='GPSLoc' placeholder='GPS Corr'>
+<input type='text' id='URL' placeholder='URL'>
+
+<button  type="button" id="submit">Add your company</button>
+<script>
+
+// Get a reference to the root of the chat data.
+
+// When the user presses enter on the message input, write the message to firebase.
+$('#submit').click(function (e) {	
+
+        var nameIn = $('#nameInput').val().toLowerCase();
+        var established  = $('#established').val();
+        var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
+        var GPS = $('#GPSLoc').val();
+        var URL = $('#URL').val();
+        database.set({name:nameIn, est:established, GPSLoc:GPS, site:URL});
+        alert("successfully added "+nameIn);
+        });
+
+
+function queryObj() {
+    var result = {}, queryString = location.search.slice(1),
+        re = /([^&=]+)=([^&]*)/g, m;
+
+    while (m = re.exec(queryString)) {
+        result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+    }
+
+    return result;
+}
+
+// Usage:
+var token = queryObj()["code"];
+
+var url = 'https://foursquare.com/oauth2/access_token?client_id=CS3OPH0Z3M3NGYLIBOMOOXLHMLLJV2DOHDNCXVG4CYGHOLFL&client_secret=OS2CL0AP3L0V3HNDYXMIXGUIUZM5O4K5JVBLRQKGIXOHEOT2&grant_type=authorization_code&redirect_uri=http://ekamp.github.io/waitTime/viewResturants&code='+token;
+
+
+
+
+$.ajax({
+url: url,
+success : function(data) {
+var finalToken = data.access_token;
+console.log(finalToken);
+
+    $.ajax({
+    url: "https://api.foursquare.com/v2/users/self?oauth_token="+finalToken+"&callback=?",
+    success : function(data) {
+    var returnedData = data.response.user.photo;
+    console.log(returnedData);
+}
+    });
+
+}
+    });
+
+</script>       
+<center>
+<div id="container">
+<div id="title">Add Company</div>
+<div id='companyInfo'></div>
+<input type='text' id='nameInput' placeholder='Company Name'>
+<!--<input type='text' id='GPSLoc' placeholder='GPS Corr'>-->
+<input type='text' id='URL' placeholder='URL'>
+<a href="submit" class="button button-flat-primary">Add</a>
+<!--<button type="button" id="submit">Add</button>
+<button type="button" id="submit">Clear</button>-->
+</div>
+</center>
+<script>
+// Get a reference to the root of the chat data.
+// When the user presses enter on the message input, write the message to firebase.
+function submit(){
+    var nameIn = $('#nameInput').val();
+    var database = new Firebase('https://waitTime.firebaseio.com/companylist/'+nameIn);
+    //var GPS = $('#GPSLoc').val();
+    var URL = $('#URL').val();
+    database.set({name:nameIn, est:established, GPSLoc:GPS, site:URL});
+    alert("successfully added "+nameIn);
+    </script>       
+        </body>
+        </html>
+>>>>>>> 7edebf745e58fcbc78e36ea123e30bb93e65108c
