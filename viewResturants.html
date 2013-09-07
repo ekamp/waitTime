@@ -8,14 +8,12 @@
     </head>
     <body>
         <div id="title">Search or select a company from below</div>
-        <div>
 	<div id='companyInfo'></div>
 <input type='text' id='search' placeholder='Search Company Name'>
 
 <button  type="button" id="submit">Search company</button>
 <div id="companyInformation"></div>
 <script>
-//change the search option to use real time search / angular
 
   var search = $('#search').val();
   var companyInfo = new Firebase('https://waitTime.firebaseio.com/companylist/'+search+'/');
