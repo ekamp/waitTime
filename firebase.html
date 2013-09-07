@@ -11,25 +11,12 @@
 <script>
 
   // Get a reference to the root of the chat data.
-  var messagesRef = new Firebase('https://flrv5yv7wlv.firebaseio-demo.com/');
+  var database = new Firebase('https://waitTime.firebaseio.com/');
 
   // When the user presses enter on the message input, write the message to firebase.
-  $('#messageInput').keypress(function (e) {
-    if (e.keyCode == 13) {
-      var name = $('#nameInput').val();
-      var text = $('#messageInput').val();
-      messagesRef.push({name:name, text:text});
+      database.push({name:"Erik Kamp", age:21});
       $('#messageInput').val('');
-    }
-  });
 
-  // Add a callback that is triggered for each chat message.
-  messagesRef.limit(10).on('child_added', function (snapshot) {
-    var message = snapshot.val();
-    $('<div/>').text(message.text).prepend($('<em/>')
-      .text(message.name+': ')).appendTo($('#messagesDiv'));
-    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-  });
 </script>
 </body>
 </html>
