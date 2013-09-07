@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/addCompany.css">
+        <link rel="stylesheet" href="lib/Buttons/css/font-awesome.min.css">
+        <link rel="stylesheet" href="lib/Buttons/css/buttons.css">
+        <link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/Buttons/js/buttons.js"></script>
+        <script src="js/waitTime.js"></script>
+    </head>
+<div id="companyInformation"></div>
+<a href="#" class="button" id="submit">Search</a>
+
+<fieldset>
+    <legend>Please select your database below</legend>
+<script>
+$('#submit').click(function (e) {
+		var search = $('#search').val().toLowerCase();
+		var companyInfo = new Firebase('https://waitTime.firebaseio.com/companylist/');
+	
+		//var companyInfo = new Firebase('https://waitTime.firebaseio.com/companylist/'+search+'/');
+		console.log(companyInfo);
+		
+		companyInfo.on('value', function (snapshot) {
+			db = snapshot.val();
+			console.log(db);	
+			if(db === null) {
+			    alert('Company does not exist.');
+			  } 
+			  else 
+			  {
+                  for (var key in db) {
+                        if (db.hasOwnProperty(key)) {
+                                $('<div/>').text(db[key].name).prepend($('<em/>')
+      				            .text(db[key].site+': ')).appendTo($('#companyInformation'));
+                                  }
+                  }
+			  }
+			 });
+	});
+</script>
+
+
+</fieldset>
+
+
