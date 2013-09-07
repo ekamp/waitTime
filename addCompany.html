@@ -48,10 +48,40 @@ function queryObj() {
 }
 
 // Usage:
-var oauth = queryObj()["code"];
+var token = queryObj()["code"];
+
+var url = 'https://foursquare.com/oauth2/access_token
+    ?client_id=CS3OPH0Z3M3NGYLIBOMOOXLHMLLJV2DOHDNCXVG4CYGHOLFL
+        &client_secret=OS2CL0AP3L0V3HNDYXMIXGUIUZM5O4K5JVBLRQKGIXOHEOT2
+            &grant_type=authorization_code
+                &redirect_uri=http://ekamp.github.io/waitTime/viewResturants
+                    &code='+token';
+
+
+
 
 $.ajax({
-url: "https://api.foursquare.com/v2/users/self?oauth_token="+oauth,
+url: url,
+success : function(data) {
+var finalToken = data.access_token;
+console.log(finalToken);
+
+    $.ajax({
+    url: "https://api.foursquare.com/v2/users/self?oauth_token="+finalToken,
+    success : function(data) {
+    var returnedData = data.response.user.photo;
+    console.log(returnedData);
+}
+    });
+
+}
+    });
+
+
+
+
+$.ajax({
+url: "https://api.foursquare.com/v2/users/self?oauth_token="+finalToken,
 success : function(data) {
 var returnedData = data.response.user.photo;
 console.log(returnedData);
