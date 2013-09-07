@@ -28,7 +28,7 @@
 	var established  = $('#established').val();
 	var GPS = $('#GPSLoc').val();
 	var URL = $('#URL').val();
-	database.push({id:nameIn, name:nameIn, est:established, GPSLoc:GPS, site:URL});
+	database.push({auth:nameIn, name:nameIn, est:established, GPSLoc:GPS, site:URL});
 	alert("successfully added "+nameIn);
 });
 
